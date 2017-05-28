@@ -14,4 +14,5 @@ echo "[main]" >> /etc/puppetlabs/puppet/puppet.conf
 echo "server = puppet.snoonet.org" >> /etc/puppetlabs/puppet/puppet.conf
 echo "environment = production" >> /etc/puppetlabs/puppet/puppet.conf
 echo "runinterval = 20m" >> /etc/puppetlabs/puppet/puppet.conf
+echo "report = true" >> /etc/puppetlabs/puppet/puppet.conf
 /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
