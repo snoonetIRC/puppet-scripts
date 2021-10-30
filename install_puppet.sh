@@ -1,13 +1,14 @@
 #!/bin/bash
-service puppet stop
-apt-get remove puppet-agent
-rm -rf /opt/puppetlabs
-rm -rf /etc/puppetlabs
-rm -rf /var/run/puppetlabs
+service puppet stop >/dev/null 2>&1
+apt-get remove -qq puppet-agent
+rm -rf /opt/puppetlabs >/dev/null 2>&1
+rm -rf /etc/puppetlabs >/dev/null 2>&1
+rm -rf /var/run/puppetlabs  >/dev/null 2>&1
 codename=`lsb_release --codename | cut -f2`
-wget https://apt.puppetlabs.com/puppetlabs-release-pc1-$codename.deb
-dpkg -i puppetlabs-release-pc1-$codename.deb
-rm puppetlabs-release-pc1-$codename.deb
+PUPPET_DEB="puppet-platform.deb"
+wget -O $PUPPET_DEB https://apt.puppetlabs.com/puppet5-release-$codename.deb
+dpkg -i $PUPPET_DEB
+rm -f $PUPPET_DEV
 apt-get update
 apt-get install puppet-agent
 echo "[main]" >> /etc/puppetlabs/puppet/puppet.conf
