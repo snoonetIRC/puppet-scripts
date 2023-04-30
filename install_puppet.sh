@@ -6,9 +6,9 @@ rm -rf /etc/puppetlabs >/dev/null 2>&1
 rm -rf /var/run/puppetlabs  >/dev/null 2>&1
 codename=`lsb_release --codename | cut -f2`
 PUPPET_DEB="puppet-platform.deb"
-wget -O $PUPPET_DEB https://apt.puppetlabs.com/puppet5-release-$codename.deb
+wget -O $PUPPET_DEB https://apt.puppetlabs.com/puppet6-release-$codename.deb
 dpkg -i $PUPPET_DEB
-rm -f $PUPPET_DEV
+rm -f $PUPPET_DEB
 apt-get update
 apt-get install puppet-agent
 echo "[main]" >> /etc/puppetlabs/puppet/puppet.conf
